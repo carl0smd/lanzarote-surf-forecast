@@ -1,0 +1,35 @@
+<nav class="space-y-4" aria-label="Surf Spot Selection">
+  <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 pl-1">{{
+    i18n.t().nav.targetStation
+  }}</label>
+
+  <div
+    class="flex md:grid md:grid-cols-1 gap-2.5 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 scroll-smooth snap-x scrollbar-none"
+  >
+    @for (spot of spots(); track spot.id) {
+      <button
+        (click)="onSelect(spot.id)"
+        [disabled]="isLoading()"
+        [class]="
+          selectedId() === spot.id
+            ? 'bg-white border-cyan-600 shadow-lg shadow-cyan-500/10 scale-[1.01]'
+            : 'bg-white/50 border-slate-200 hover:border-slate-300'
+        "
+        class="shrink-0 w-45 md:w-full flex items-center justify-between p-3.5 rounded-xl border-2 transition-all group text-left snap-center disabled:opacity-50"
+      >
+        <div class="pr-2">
+          <div class="text-sm font-black truncate" [class.text-cyan-600]="selectedId() === spot.id">
+            {{ spot.name }}
+          </div>
+          <div class="text-[10px] font-mono font-bold text-slate-400 uppercase">
+            {{ spot.latitude }}N · {{ spot.longitude }}W
+          </div>
+        </div>
+        <div
+          [class]="selectedId() === spot.id ? 'scale-100 opacity-100' : 'scale-50 opacity-0'"
+          class="h-2 w-2 rounded-full bg-cyan-600 transition-all duration-300 shadow-[0_0_8px_rgba(8,145,178,0.4)]"
+        ></div>
+      </button>
+    }
+  </div>
+</nav>

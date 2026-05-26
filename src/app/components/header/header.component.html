@@ -1,0 +1,25 @@
+<header class="bg-white/80 backdrop-blur-xl border-b border-slate-200 sticky top-0 z-60 w-full">
+  <div class="max-w-350 mx-auto px-4 md:px-10 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div
+        class="h-10 w-10 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-slate-200/50 overflow-hidden border border-slate-100"
+      >
+        <img src="/images/apple-touch-icon.png" alt="Logo" class="w-8 h-8 object-contain" />
+      </div>
+      <h1 class="text-xl md:text-2xl font-black tracking-tighter leading-none">
+        {{ i18n.t().header.title }}
+        <span class="text-cyan-600">{{ i18n.t().header.subtitle }}</span>
+      </h1>
+    </div>
+
+    <!-- Language Toggle -->
+    <button
+      (click)="i18n.toggleLanguage()"
+      class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:border-cyan-600 transition-all text-[10px] font-black uppercase tracking-widest shadow-sm"
+    >
+      <span [class.text-cyan-600]="i18n.currentLang() === 'es'">ES</span>
+      <span class="text-slate-300">|</span>
+      <span [class.text-cyan-600]="i18n.currentLang() === 'en'">EN</span>
+    </button>
+  </div>
+</header>
