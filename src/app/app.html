@@ -1,15 +1,20 @@
 <div>
-  <main class="min-h-screen font-sans bg-slate-100 text-slate-900 selection:bg-cyan-500/30">
+  <main
+    class="min-h-screen font-sans bg-slate-100 text-slate-900 selection:bg-cyan-500/30 flex flex-col"
+  >
+    <!-- Fixed Header -->
     <app-header></app-header>
 
-    <div
-      class="max-w-350 mx-auto p-4 md:p-10 flex flex-col lg:grid lg:grid-cols-12 gap-8 md:gap-12 relative items-start"
-    >
-      <!-- Mobile Fixed Header Spacer -->
-      <div class="h-35 md:hidden"></div>
+    <!-- Header Spacer (Height of header) -->
+    <div class="h-16.25 w-full"></div>
 
+    <div
+      class="max-w-350 mx-auto p-4 md:p-10 flex flex-col lg:grid lg:grid-cols-12 gap-8 md:gap-12 relative items-start grow w-full"
+    >
       <!-- Left Column: Navigation -->
-      <aside class="contents lg:block lg:col-span-3 lg:sticky lg:top-25 lg:self-start w-full">
+      <aside
+        class="sticky top-16.25 z-50 w-full lg:top-25 lg:col-span-3 lg:self-start lg:z-auto bg-slate-100/90 backdrop-blur-md lg:-mx-4 py-4 border-b border-slate-200 lg:bg-transparent lg:backdrop-blur-none lg:border-none lg:p-0"
+      >
         <app-spot-selector
           [spots]="spots"
           [selectedId]="selectedSpotId()"
@@ -109,8 +114,8 @@
     </div>
 
     <!-- Minimalist Footer -->
-    <footer class="max-w-350 mx-auto px-8 pb-12 mt-4">
-      <div class="flex items-center justify-center py-10 border-t border-slate-200">
+    <footer class="w-full bg-slate-100 py-12 border-t border-slate-200">
+      <div class="max-w-350 mx-auto px-8 flex items-center justify-center">
         <div class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">
           {{ i18n.t().footer.copyright }}
         </div>

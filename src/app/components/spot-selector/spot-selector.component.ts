@@ -8,7 +8,8 @@ import { I18nService } from '../../services/i18n.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './spot-selector.component.html',
-  styleUrls: ['../../app.css']
+  styleUrls: ['../../app.css'],
+  styles: [`:host { display: block; }`]
 })
 export class SpotSelectorComponent {
   protected readonly i18n = inject(I18nService);

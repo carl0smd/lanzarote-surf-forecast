@@ -6,7 +6,8 @@ import { I18nService } from '../../services/i18n.service';
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
+  styles: [`:host { display: block; }`]
 })
 export class HeaderComponent {
   protected readonly i18n = inject(I18nService);
