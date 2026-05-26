@@ -26,6 +26,9 @@ export class ForecastChartComponent {
     return {
       responsive: true,
       maintainAspectRatio: false,
+      animation: {
+        duration: this.forecast().length > 0 ? 1000 : 0 // Smooth transition if data exists
+      },
       interaction: { mode: 'index', intersect: false },
       scales: {
         x: {

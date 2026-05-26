@@ -36,8 +36,10 @@
       </div>
     }
 
-    <canvas baseChart [data]="chartData()" [options]="chartOptions()" [type]="lineChartType">
-    </canvas>
+    @if (forecast().length > 0) {
+      <canvas baseChart [data]="chartData()" [options]="chartOptions()" [type]="lineChartType">
+      </canvas>
+    }
   </div>
 
   <div class="mt-8 flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
