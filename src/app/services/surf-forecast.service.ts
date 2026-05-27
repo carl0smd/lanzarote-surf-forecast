@@ -18,7 +18,8 @@ export class SurfForecastService {
     const params = new HttpParams()
       .set('latitude', lat.toString())
       .set('longitude', lng.toString())
-      .set('timezone', 'Atlantic/Canary');
+      .set('timezone', 'Atlantic/Canary')
+      .set('forecast_days', '3');
 
     const marineParams = params
       .set('hourly', 'wave_height,wind_wave_direction')

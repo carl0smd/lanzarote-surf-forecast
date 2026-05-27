@@ -85,6 +85,18 @@ export class ForecastChartComponent {
     const data = this.forecast();
     const lang = this.i18n.currentLang() === 'es' ? 'es-ES' : 'en-US';
     const t = this.i18n.t().chart;
+
+    // Find the index of the forecast point closest to current time
+    const nowMs = Date.now();
+    let closestIndex = -1;
+    let minDiff = Infinity;
+    for (let i = 0; i < data.length; i++) {
+      const diff = Math.abs(data[i].time.getTime() - nowMs);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIndex = i;
+      }
+    }
     
     return {
       labels: data.map(d => {
@@ -103,7 +115,11 @@ export class ForecastChartComponent {
           backgroundColor: 'rgba(6, 182, 212, 0.1)',
           fill: true,
           tension: 0.4,
-          pointRadius: 0,
+          pointRadius: data.map((_, i) => i === closestIndex ? 6 : 0),
+          pointHoverRadius: data.map((_, i) => i === closestIndex ? 8 : 6),
+          pointBackgroundColor: data.map((_, i) => i === closestIndex ? '#ffffff' : '#0891b2'),
+          pointBorderColor: data.map((_, i) => i === closestIndex ? '#0891b2' : '#ffffff'),
+          pointBorderWidth: data.map((_, i) => i === closestIndex ? 3 : 0),
           pointHitRadius: 25,
           borderWidth: 3
         }
